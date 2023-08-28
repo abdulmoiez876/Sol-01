@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.19;
+pragma solidity ^0.8.18;
 
 struct person {
     string name;
@@ -18,7 +18,10 @@ contract SimpleStorage {
         return favNumber;
     }
 
+    mapping (string => uint256) public personToFavNumber;
+
     function addPerson(string memory name, uint256 _favNumber) public  {
         persons.push(person(name, _favNumber));
+        personToFavNumber[name] = _favNumber;
     }
 }
